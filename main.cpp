@@ -45,10 +45,10 @@ int main(int argc, char *argv[])
 
     //part 3
     map<string, string> wordmap;
-    string last="",
-    for (vector<string>::iterator it=token.begin(); it!=token.end(); it++){
+    string last="";
+    for (vector<string>::iterator it=tokens.begin(); it!=tokens.end(); it++){
         wordmap[last]=*it;
-        last = *it
+        last = *it;
     }
        
 }
