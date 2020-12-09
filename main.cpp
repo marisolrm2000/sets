@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <utility>
+#include <list>
 using namespace std;
 int main(int argc, char *argv[])
 {
@@ -44,11 +45,17 @@ int main(int argc, char *argv[])
     }
 
     //part 3
-    map<string, vector<string> > wordmap;
-    string state = "";
-    for(vector<string>::iterator it=tokens.begin(); it !=tokens.end(); it++) {
+    const int M = 3;
+    map<list<string>, vector<string> > wordmap;
+    //creates list of empty strings
+    list<string> state;
+    for (int i = 0; i < M; i++) {
+      state.push_back("");
+    }   
+    for (vector<string>::iterator it=tokens.begin(); it!=tokens.end(); it++) {
       wordmap[state].push_back(*it);
-      state = *it;
+      state.push_back(*it);
+      state.pop_front();
     }
     //ofstream mapfile(filename+"_map.txt");
     //for (map<string,string>::iterator it=wordmap.begin(); it!=wordmap.end(); ++it){
@@ -60,11 +67,14 @@ int main(int argc, char *argv[])
     //part4
     srand(time(NULL)); // this line initializes the random number generated
                    // so you dont get the same thing every time
-    state = "";
+    state.clear();
+    for (int i = 0; i < M; i++) {
+      state.push_back("");
+    }
     for (int i = 0; i < 100; i++) {
       int ind = rand() % wordmap[state].size();
-      cout << wordmap[state][ind] << " ";
-      state = wordmap[state][ind];
+      cout << wordmap[state][ind]<<" ";
+      state.push_back(wordmap[state][ind]);
+      state.pop_front();
     }
-    cout << endl;
 }
