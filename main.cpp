@@ -36,9 +36,19 @@ int main(int argc, char *argv[])
         setfile << ' ' << *it;
     }
     cout << endl;
+    
+    //part 2
     ofstream vectorfile(filename+"_vector.txt");
     for (vector<string>::iterator it=tokens.begin(); it!=tokens.end(); ++it){
         vectorfile << ' ' << *it;
     }
 
+    //part 3
+    map<string, string> wordmap;
+    string last="",
+    for (vector<string>::iterator it=token.begin(); it!=token.end(); it++){
+        wordmap[last]=*it;
+        last = *it
+    }
+       
 }
