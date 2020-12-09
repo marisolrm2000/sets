@@ -36,4 +36,10 @@ int main(int argc, char *argv[])
         setfile << ' ' << *it;
     }
     cout << endl;
+    ofstream vectorfile(filename+"_vector.txt");
+    for (vector<string>::iterator it=tokens.begin(); it!=tokens.end(); ++it){
+        cout << ' ' << *it;
+        setfile << ' ' << *it;
+    }
+
 }
