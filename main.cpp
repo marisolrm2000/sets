@@ -32,14 +32,13 @@ int main(int argc, char *argv[])
     cout << "Number of unique words "<<unique.size()<<endl;
     ofstream setfile(filename+"_set.txt");
     for (set<string>::iterator it=unique.begin(); it!=unique.end(); ++it){
-        cout << ' ' << *it;
+        //cout << ' ' << *it;
         setfile << ' ' << *it;
     }
     cout << endl;
     ofstream vectorfile(filename+"_vector.txt");
     for (vector<string>::iterator it=tokens.begin(); it!=tokens.end(); ++it){
-        cout << ' ' << *it;
-        setfile << ' ' << *it;
+        vectorfile << ' ' << *it;
     }
 
 }
