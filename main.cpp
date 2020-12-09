@@ -11,7 +11,8 @@ int main(int argc, char *argv[])
     vector<string> tokens;
     set <string> unique;
     string next_line;  // Each data line
-    ifstream in(argv[1]);
+    string filename = argv[1];
+    ifstream in(filename);
     while (getline(in, next_line)) {
         istringstream iss(next_line);
         string token;
@@ -29,6 +30,10 @@ int main(int argc, char *argv[])
     }
     cout << "Number of words "<<tokens.size()<<endl;
     cout << "Number of unique words "<<unique.size()<<endl;
-    for (set<string>::iterator it=unique.begin(); it!=unique.end(); ++it)
+    ofstream setfile(filename+"_set.txt");
+    for (set<string>::iterator it=unique.begin(); it!=unique.end(); ++it){
         cout << ' ' << *it;
-    cout << endl;}
+        setfile << ' ' << *it;
+    }
+    cout << endl;
+}
