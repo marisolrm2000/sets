@@ -50,5 +50,12 @@ int main(int argc, char *argv[])
         wordmap[last]=*it;
         last = *it;
     }
+    ofstream mapfile(filename+"_map.txt");
+    for (map<string,string>::iterator it=wordmap.begin(); it!=wordmap.end(); ++it){
+        //cout << it->first<<' ' << it->second<<endl;
+        mapfile << it->first<<',' << it->second<<endl;
+
+    }
+    cout << endl;
        
 }
