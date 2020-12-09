@@ -44,26 +44,27 @@ int main(int argc, char *argv[])
     }
 
     //part 3
-    map<string, string> wordmap;
-    string last="";
-    for (vector<string>::iterator it=tokens.begin(); it!=tokens.end(); it++){
-        wordmap[last]=*it;
-        last = *it;
+    map<string, vector<string> > wordmap;
+    string state = "";
+    for(vector<string>::iterator it=tokens.begin(); it !=tokens.end(); it++) {
+      wordmap[state].push_back(*it);
+      state = *it;
     }
-    ofstream mapfile(filename+"_map.txt");
-    for (map<string,string>::iterator it=wordmap.begin(); it!=wordmap.end(); ++it){
-        //cout << it->first<<' ' << it->second<<endl;
-        mapfile << it->first<< ", " << it->second<<endl;
-
-    }
+    //ofstream mapfile(filename+"_map.txt");
+    //for (map<string,string>::iterator it=wordmap.begin(); it!=wordmap.end(); ++it){
+    //    //cout << it->first<<' ' << it->second<<endl;
+    //    mapfile << it->first<< ", " << it->second<<endl;
+    //}
     cout << endl;
 
     //part4
-    string state = "";
-    for(int i = 0; i < 100; i++){
-      cout << wordmap[state] << " ";
-      state = wordmap[state];
+    srand(time(NULL)); // this line initializes the random number generated
+                   // so you dont get the same thing every time
+    state = "";
+    for (int i = 0; i < 100; i++) {
+      int ind = rand() % wordmap[state].size();
+      cout << wordmap[state][ind] << " ";
+      state = wordmap[state][ind];
     }
     cout << endl;
-       
 }
