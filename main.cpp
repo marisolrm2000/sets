@@ -31,4 +31,4 @@ int main(int argc, char *argv[])
     cout << "Number of unique words "<<unique.size()<<endl;
     for (set<string>::iterator it=unique.begin(); it!=unique.end(); ++it)
         cout << ' ' << *it;
-    cout << endl;
+    cout << endl;}

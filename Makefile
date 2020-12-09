@@ -1,6 +1,4 @@
-CC = g++
-CCFLAGS = -g -std=c++11
+sets: main.cpp
+	g++ -std=c++11 -o sets main.cpp
 
-sets:	sets.cpp 
-	$(CC) $(CCFLAGS)  -o sets sets.cpp
 
